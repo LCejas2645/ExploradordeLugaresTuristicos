@@ -1,6 +1,7 @@
 package com.softlc.exploradordelugaresturisticos.ui.home;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.softlc.exploradordelugaresturisticos.R;
@@ -37,8 +39,18 @@ public class LugarAdapter extends RecyclerView.Adapter<LugarAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LugarTuristico lt = listaDeLugares.get(position);
         holder.nombre.setText(lt.getNombre());
-        holder.descripcion.setText(lt.getDescripcion());
+        //holder.descripcion.setText(lt.getDescripcion());
         holder.foto.setImageResource(lt.getFoto());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("lugar", lt);
+
+                Navigation.findNavController(v).navigate(R.id.descripcionFragment, bundle);
+            }
+        });
     }
 
     @Override
@@ -55,8 +67,9 @@ public class LugarAdapter extends RecyclerView.Adapter<LugarAdapter.ViewHolder> 
             super(itemView);
 
             nombre=itemView.findViewById(R.id.tvNombre);
-            descripcion=itemView.findViewById(R.id.tvDescripcion);
+            //descripcion=itemView.findViewById(R.id.tvDescripcion);
             foto=itemView.findViewById(R.id.imFoto);
+
 
         }
     }

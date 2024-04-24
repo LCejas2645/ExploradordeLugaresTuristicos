@@ -52,6 +52,7 @@ public class MapsFragment extends Fragment {
                 @Override
                 public void onChanged(Location location) {
                     if (location != null) {
+
                         mMap.setMapType(SlideshowFragment.tipoMapa);
                         // Agregar marcador para Plaza del Cerro , -33.28196768685058, -66.30024650881231
                         LatLng ubicacionManual6 = new LatLng(-33.28196768685058, -66.30024650881231);

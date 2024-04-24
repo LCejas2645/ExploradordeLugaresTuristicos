@@ -9,7 +9,11 @@
         android:id="@+id/nav_home"
         android:name="com.softlc.exploradordelugaresturisticos.ui.home.HomeFragment"
         android:label="Lugares de Interes"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_descripcionFragment"
+            app:destination="@id/descripcionFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -27,4 +31,13 @@
         android:name="com.softlc.exploradordelugaresturisticos.ui.salir.SalirFragment"
         android:label="Salir"
         tools:layout="@layout/fragment_salir" />
+    <fragment
+        android:id="@+id/descripcionFragment"
+        android:name="com.softlc.exploradordelugaresturisticos.ui.home.DescripcionFragment"
+        android:label="Descripcion del Lugar"
+        tools:layout="@layout/fragment_descripcion" >
+        <action
+            android:id="@+id/action_descripcionFragment_to_nav_home2"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>
